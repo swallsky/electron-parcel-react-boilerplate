@@ -26,7 +26,7 @@
     "dev": "NODE_ENV=dev electron dist/app/app.js",
     "app:dev": "concurrently \"yarn start\" \"yarn dev\"",
     "pack:mac": "yarn build && electron-builder build --mac",
-    "pack:win": "yarn build && electron-builder build --win --ia32"
+    "pack:win": "yarn build && electron-builder build --win"
   },
   "devDependencies": {
     "concurrently": "^7.2.2",
@@ -40,7 +40,7 @@
     "react-router-dom": "^6.2.2"
   },
   "build": {
-    "appId": "com.electron.boilerplate",
+    "appId": "com.electron.parcel.react",
     "productName": "parcel-demo",
     "asar": true,
     "files": [
@@ -65,7 +65,13 @@
     },
     "win": {
       "target": [
-        "nsis"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
       ],
       "icon": "./assets/logo/logo.icns"
     }
