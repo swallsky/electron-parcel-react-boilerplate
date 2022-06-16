@@ -7,6 +7,6 @@ const path = require("path");
  */
 exports.epath = function (ept) {
   let appPath = app.getAppPath();
-  appPath = appPath.replace("dist/app",""); //兼容开发模式
+  // appPath = appPath.replace("dist/app",""); //兼容开发模式
   return path.resolve(appPath, "dist", ...ept);
 };

@@ -5,7 +5,7 @@
   "keywords": [],
   "author": "jackXu",
   "license": "ISC",
-  "main": "dist/app/app.js",
+  "main": "app.js",
   "targets": {
     "web": {
       "source": [
@@ -34,7 +34,7 @@
   "scripts": {
     "start": "parcel watch",
     "build": "rm -rf dist && parcel build",
-    "dev": "NODE_ENV=dev electron dist/app/app.js",
+    "dev": "NODE_ENV=dev electron .",
     "app:dev": "concurrently \"yarn start\" \"wait-on dist/app/app.js\" \"yarn dev\"",
     "pack:mac": "yarn build && electron-builder build --mac",
     "pack:win": "yarn build && electron-builder build --win"

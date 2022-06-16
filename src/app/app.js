@@ -1,8 +1,7 @@
-const { app, BrowserWindow } = require("electron");
+const { BrowserWindow } = require("electron");
 const { epath } = require("./utils/dir");
 
-var win = null;
-app.whenReady().then(() => {
+exports.MainWindow = function(){
   win = new BrowserWindow({
     width: 1280,
     height: 800,
@@ -12,4 +11,5 @@ app.whenReady().then(() => {
   });
   win.loadFile(epath(["web", "index.html"]));
   win.webContents.openDevTools();
-});
+  return win;
+}
