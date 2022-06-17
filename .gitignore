@@ -6,3 +6,5 @@
 /.DS_Store
 */.DS_Store
 /src/app/.DS_Store
+
+/app.js
