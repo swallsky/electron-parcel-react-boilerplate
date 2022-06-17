@@ -92,5 +92,8 @@
       "icon": "./assets/logo/logo.icns"
     }
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+  "@parcel/transformer-js": {
+    "inlineFS": false,
+    "inlineEnvironment": false
+  }
 }
