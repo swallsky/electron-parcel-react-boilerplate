@@ -44,6 +44,8 @@
     "pack:win": "yarn build && electron-builder build --win"
   },
   "devDependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "antd": "^4.21.3",
     "concurrently": "^7.2.2",
     "electron": "18.3.4",
     "electron-builder": "^23.1.0",

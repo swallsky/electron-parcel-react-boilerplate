@@ -1,14 +1,19 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
+import { Breadcrumb } from "antd";
 
 export default function Home() {
   // 首页
-  useEffect(()=>{
-    window.electronApi.open();
+  useEffect(() => {
+    // window.electronApi.open();
   });
 
   return (
     <>
-      <div>hello world sky!!!</div>
+      <Breadcrumb style={{ margin: "16px 0" }}>
+        <Breadcrumb.Item>首页</Breadcrumb.Item>
+        <Breadcrumb.Item>首页</Breadcrumb.Item>
+      </Breadcrumb>
+      <div>首页</div>
     </>
   );
 }
