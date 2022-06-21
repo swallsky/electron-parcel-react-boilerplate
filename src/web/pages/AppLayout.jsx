@@ -6,19 +6,19 @@ const { Sider, Content } = Layout;
 
 export default function AppLayout() {
   const navigate = useNavigate(); //导航跳转
-  const [defMenu, setDefMenu] = useState(["/"]); //设置默认菜单状态
+  const [defMenu, setDefMenu] = useState(); //设置默认菜单状态
   const [menuData, setMenuData] = useState([]);
 
   // 数据处理
   useEffect(function () {
     // 默认选中
-    setDefMenu(window.location.hash.substring(1));
+    setDefMenu(window.location.hash.substring(1) || ["/"]);
 
     setMenuData([
       { label: "首页", key: "/", icon: <BookOutlined /> },
       { label: "Page1", key: "/page1", icon: <UngroupOutlined /> }
     ]);
-  }, []);
+  },[]);
   //点击菜单
   function menuClick(e) {
     setDefMenu(e.key);

@@ -9,35 +9,31 @@
   "targets": {
     "main": {
       "source": "src/app/app.js",
-      "context": "electron-main",
-      "sourceMap": false
+      "context": "electron-main"
     },
     "web": {
       "source": [
         "src/web/index.html"
       ],
-      "publicUrl": "./",
-      "sourceMap": false
+      "publicUrl": "./"
     },
     "app": {
       "source": [
         "src/app/utils/dir.js"
       ],
-      "context": "electron-main",
-      "sourceMap": false
+      "context": "electron-main"
     },
     "app-preload": {
       "source": [
         "src/app/preload/main.js"
       ],
       "context": "electron-renderer",
-      "distDir": "dist/app/preload",
-      "sourceMap": false
+      "distDir": "dist/app/preload"
     }
   },
   "scripts": {
-    "start": "parcel watch --no-cache --no-hmr",
-    "build": "rm -rf dist && parcel build --no-cache",
+    "start": "parcel watch --no-source-maps --no-hmr",
+    "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "dev": "NODE_ENV=dev electron .",
     "app:dev": "concurrently \"yarn start\" \"wait-on app.js\" \"yarn dev\"",
     "pack:mac": "yarn build && electron-builder build --mac",
