@@ -37,7 +37,7 @@
   },
   "scripts": {
     "start": "parcel watch --no-cache --no-hmr",
-    "build": "rm -rf dist && parcel build",
+    "build": "rm -rf dist && parcel build --no-cache",
     "dev": "NODE_ENV=dev electron .",
     "app:dev": "concurrently \"yarn start\" \"wait-on app.js\" \"yarn dev\"",
     "pack:mac": "yarn build && electron-builder build --mac",

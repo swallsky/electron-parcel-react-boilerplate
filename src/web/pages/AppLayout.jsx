@@ -10,10 +10,13 @@ export default function AppLayout() {
   const [menuData, setMenuData] = useState([]);
 
   // 数据处理
-  useEffect(function(){
+  useEffect(function () {
+    // 默认选中
+    setDefMenu(window.location.hash.substring(1));
+
     setMenuData([
-      { label: "首页", key: "/",icon:<BookOutlined /> },
-      { label: "Page1", key: "/page1",icon:<UngroupOutlined /> },
+      { label: "首页", key: "/", icon: `<BookOutlined />` },
+      { label: "Page1", key: "/page1", icon: `<UngroupOutlined />` }
     ]);
   }, []);
   //点击菜单
