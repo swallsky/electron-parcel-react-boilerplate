@@ -33,11 +33,11 @@
     }
   },
   "scripts": {
+    "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on 'dist/web/index.html'\" \"nodemon --watch src/app --exec 'yarn dev'\"",
     "web": "parcel watch --target web --no-source-maps",
     "app": "parcel watch --target main --target app --target app-preload --no-source-maps --no-hmr",
-    "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "dev": "NODE_ENV=dev electron .",
-    "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on 'dist/web/index.html'\" \"yarn dev\"",
+    "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "pack:mac": "yarn build && electron-builder build --mac",
     "pack:win": "yarn build && electron-builder build --win"
   },
