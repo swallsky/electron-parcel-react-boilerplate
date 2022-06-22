@@ -10,7 +10,7 @@ function MainWindow() {
     },
   });
   win.loadFile(epath(["web", "index.html"]));
-  if (process.env.NODE_ENV !== 'production') { //开发环境时
+  if (app.isPackaged == false) { //开发环境时
     win.webContents.openDevTools();
   }
   return win;

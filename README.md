@@ -10,7 +10,7 @@ npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
 ```
 # 安装依耐包
 yarn
-# 启动
+# 启动调试模式
 yarn app:dev
 ```
 
