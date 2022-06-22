@@ -6,7 +6,6 @@
   "author": "jackXu",
   "license": "ISC",
   "main": "app.js",
-  "source": "src/app/app.js",
   "targets": {
     "main": {
       "source": "src/app/app.js",
