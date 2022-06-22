@@ -4,7 +4,7 @@ import { Breadcrumb } from "antd";
 export default function Home() {
   // 首页
   useEffect(() => {
-    // window.electronApi.open();
+    window.electronApi.open();
   });
 
   return (

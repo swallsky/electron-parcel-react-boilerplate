@@ -6,40 +6,36 @@
   "author": "jackXu",
   "license": "ISC",
   "main": "app.js",
+  "source": "src/app/app.js",
   "targets": {
-    "main":{
+    "main": {
       "source": "src/app/app.js",
       "context": "electron-main"
     },
-    "app": {
+    "preload": {
       "source": [
-        "src/app/utils/dir.js"
-      ],
-      "context": "electron-main"
-    },
-    "app-preload": {
-      "source": [
-        "src/app/preload/main.js"
+        "src/web/preload/main.js"
       ],
       "context": "electron-renderer",
-      "distDir": "dist/app/preload"
+      "distDir": "dist/web/preload"
     },
     "web": {
-      "source": [
-        "src/web/index.html"
-      ],
+      "source": "src/web/index.html",
       "context": "browser",
       "publicUrl": "./"
     }
   },
   "scripts": {
-    "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on 'dist/web/index.html'\" \"nodemon --watch src/app --exec 'yarn dev'\"",
-    "web": "parcel watch --target web --no-source-maps",
-    "app": "parcel watch --target main --target app --target app-preload --no-source-maps --no-hmr",
+    "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on app.js dist/web/index.html\" \"nodemon --watch src/app --exec 'yarn dev'\"",
+    "web": "parcel watch --target web --target preload --no-source-maps",
+    "app": "parcel watch --target main --no-source-maps --no-hmr",
     "dev": "NODE_ENV=dev electron .",
     "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "pack:mac": "yarn build && electron-builder build --mac",
     "pack:win": "yarn build && electron-builder build --win"
+  },
+  "dependencies": {
+    "sqlite3": "^5.0.8"
   },
   "devDependencies": {
     "@ant-design/icons": "^4.7.0",
