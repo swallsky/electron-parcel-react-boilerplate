@@ -32,7 +32,7 @@
     }
   },
   "scripts": {
-    "start": "parcel watch --no-source-maps --no-hmr",
+    "start": "parcel watch --no-source-maps",
     "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "dev": "NODE_ENV=dev electron .",
     "app:dev": "concurrently \"yarn start\" \"wait-on app.js\" \"yarn dev\"",

@@ -16,7 +16,7 @@ export default function AppLayout() {
 
     setMenuData([
       { label: "首页", key: "/", icon: <BookOutlined /> },
-      { label: "Page1", key: "/page1", icon: <UngroupOutlined /> }
+      { label: "Page", key: "/page1", icon: <UngroupOutlined /> }
     ]);
   },[]);
   //点击菜单
