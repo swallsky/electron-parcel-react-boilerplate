@@ -5,7 +5,7 @@ import AppLayout from "./pages/AppLayout";
 import Home from "./pages/Home";
 import Page1 from "./pages/Page1";
 
-import "../../assets/css/web.css";
+import "./styles/web.css";
 
 // 路由
 export default function Router() {

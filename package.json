@@ -7,15 +7,9 @@
   "license": "ISC",
   "main": "app.js",
   "targets": {
-    "main": {
+    "main":{
       "source": "src/app/app.js",
       "context": "electron-main"
-    },
-    "web": {
-      "source": [
-        "src/web/index.html"
-      ],
-      "publicUrl": "./"
     },
     "app": {
       "source": [
@@ -29,13 +23,21 @@
       ],
       "context": "electron-renderer",
       "distDir": "dist/app/preload"
+    },
+    "web": {
+      "source": [
+        "src/web/index.html"
+      ],
+      "context": "browser",
+      "publicUrl": "./"
     }
   },
   "scripts": {
-    "start": "parcel watch --no-source-maps",
+    "web": "parcel watch --target web --no-source-maps",
+    "app": "parcel watch --target main --target app --target app-preload --no-source-maps --no-hmr",
     "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "dev": "NODE_ENV=dev electron .",
-    "app:dev": "concurrently \"yarn start\" \"wait-on app.js\" \"yarn dev\"",
+    "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on 'dist/web/index.html'\" \"yarn dev\"",
     "pack:mac": "yarn build && electron-builder build --mac",
     "pack:win": "yarn build && electron-builder build --win"
   },
@@ -45,6 +47,7 @@
     "concurrently": "^7.2.2",
     "electron": "18.3.4",
     "electron-builder": "^23.1.0",
+    "nodemon": "^2.0.16",
     "parcel": "^2.6.0",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",

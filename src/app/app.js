@@ -10,7 +10,9 @@ function MainWindow() {
     },
   });
   win.loadFile(epath(["web", "index.html"]));
-  win.webContents.openDevTools();
+  if (process.env.NODE_ENV !== 'production') { //开发环境时
+    win.webContents.openDevTools();
+  }
   return win;
 }
 
