@@ -8,7 +8,7 @@
   "main": "app.js",
   "targets": {
     "main": {
-      "source": "src/app/app.js",
+      "source": "src/app.js",
       "context": "electron-main"
     },
     "preload": {
