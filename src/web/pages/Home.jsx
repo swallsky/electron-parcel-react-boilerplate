@@ -4,7 +4,7 @@ import { Breadcrumb } from "antd";
 export default function Home() {
   // 首页
   useEffect(async () => {
-    let res = await window.electronApi.model("test.debug", "id=1");
+    let res = await window.electronApi.model("example.debug", "id=1");
     console.log(res);
   });
 
