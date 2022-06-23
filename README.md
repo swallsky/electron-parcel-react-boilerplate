@@ -15,15 +15,13 @@ yarn app:dev
 ```
 
 # 目录结构说明
-```
--app electron进程目录
- -libs 公共类
- -model 公共模型类
- -app.js 主进程
- -ipc.js 主进程与渲染进程间通讯
- -main.js 主窗口
+- app electron进程目录
+ - libs 公共类
+ - model 公共模型类
+ - app.js 主进程
+ - ipc.js 主进程与渲染进程间通讯
+ - main.js 主窗口
 - web 基于react的渲染进程页面
-```
 
 # 生成安装包
 ```
