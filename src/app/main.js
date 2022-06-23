@@ -1,5 +1,5 @@
-const { app,BrowserWindow, Tray, nativeImage } = require("electron");
-const { epath,assets } = require("./libs/dir");
+const { app, BrowserWindow, Tray, nativeImage } = require("electron");
+const { epath, assets } = require("./libs/dir");
 
 /**
  * 主窗口
@@ -23,11 +23,8 @@ exports.mainWindow = function () {
 
 exports.trayIcon = function (win) {
   let tray = null;
-  // console.log('mu:',app.getAppPath(),path.resolve(path.join(path.dirname(__dirname), "src", "assets", "logo", "logo-tray.png")))
   // 加入托盘
-  const icon = nativeImage.createFromPath(
-    assets(["logo", "logo-tray.png"])
-  );
+  const icon = nativeImage.createFromPath(assets(["logo", "logo-tray.png"]));
   tray = new Tray(icon);
   // const contextMenu = Menu.buildFromTemplate([
   //   { label: "菜单1", type: "radio" },

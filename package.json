@@ -12,7 +12,7 @@
       "context": "electron-main"
     },
     "preload": {
-      "source": "src/web/preload/main.js",
+      "source": ["src/web/preload/main.js"],
       "context": "electron-renderer",
       "distDir": "dist/web/preload"
     },
