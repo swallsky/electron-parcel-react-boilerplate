@@ -2,6 +2,8 @@ const sqlite3 = require("sqlite3").verbose();
 const { sqlitefile } = require("./dir");
 const db = new sqlite3.Database(sqlitefile);
 
+// sql对象
+exports.db = db;
 /**
  * 单行写入数据
  * @param {*} sql 表字段定义

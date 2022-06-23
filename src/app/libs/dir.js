@@ -23,6 +23,4 @@ exports.assets = function (adir) {
  * 返回sqlite数据库文件地址
  * @returns
  */
-exports.sqlitefile = function () {
-  return path.join(app.getPath("home"), ".sqlite3-" + pconfig.version + ".db");
-};
+exports.sqlitefile = path.resolve(app.getPath("home"), "."+pconfig.name+"-" + pconfig.version + ".db");
