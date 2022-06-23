@@ -22,6 +22,11 @@ yarn app:dev
     - ipc.js 主进程与渲染进程间通讯
     - main.js 主窗口
 - web 基于react的渲染进程页面
+    - pages 页面
+    - preload 预加载js
+    - styles css样式
+    - index.js 前端入口文件
+    - Router.jsx 路由文件
 
 # 生成安装包
 ```
