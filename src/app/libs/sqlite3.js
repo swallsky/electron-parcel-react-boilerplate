@@ -1,12 +1,6 @@
 const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
-const { app } = require("electron");
-const config = require(path.join(app.getAppPath(), "package.json"));
-const sqlfile = path.join(
-  app.getPath("home"),
-  ".sqlite3-" + config.version + ".db"
-);
-const db = new sqlite3.Database(sqlfile);
+const { sqlitefile } = require("./dir");
+const db = new sqlite3.Database(sqlitefile);
 
 /**
  * 单行写入数据

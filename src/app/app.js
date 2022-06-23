@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require("electron");
-const { mainWindow, trayIcon } = require("./app/main");
-const ipcManager = require("./app/ipc");
+const { mainWindow, trayIcon } = require("./main");
+const ipcManager = require("./ipc");
 
 var win = null;
 var iconTary = null;

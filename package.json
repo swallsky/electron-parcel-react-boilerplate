@@ -8,7 +8,7 @@
   "main": "app.js",
   "targets": {
     "main": {
-      "source": "src/app.js",
+      "source": "src/app/app.js",
       "context": "electron-main"
     },
     "preload": {
@@ -24,8 +24,8 @@
   },
   "scripts": {
     "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on app.js dist/web/index.html\" \"nodemon --watch src/app --exec 'yarn dev'\"",
-    "web": "parcel watch --target web --target preload --no-source-maps",
-    "app": "parcel watch --target main --no-source-maps --no-hmr",
+    "web": "parcel watch --target web --no-source-maps --no-cache",
+    "app": "parcel watch --target main --target preload --no-source-maps --no-hmr --no-cache",
     "dev": "NODE_ENV=dev electron .",
     "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "pack:mac": "yarn build && electron-builder build --mac",
