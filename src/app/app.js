@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require("electron");
+require("./libs/dir").createHomePath();
 const { mainWindow, trayIcon } = require("./main");
 const ipcManager = require("./ipc");
 const log = require("./libs/log");
