@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { Breadcrumb } from "antd";
+const { model } = window.electronApi;
 
 export default function Home() {
   // 首页
   useEffect(async () => {
-    let res = await window.electronApi.model("example.debug", "id=1");
+    let res = await model("example.debug", "id=1");
     console.log(res);
   });
 
