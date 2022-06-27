@@ -13,7 +13,9 @@
       "context": "electron-main"
     },
     "preload": {
-      "source": ["src/web/preload/main.js"],
+      "source": [
+        "src/web/preload/main.js"
+      ],
       "context": "electron-renderer",
       "distDir": "dist/web/preload"
     },
@@ -25,14 +27,15 @@
   },
   "scripts": {
     "app:dev": "concurrently \"yarn web\" \"yarn app\" \"wait-on app.js dist/web/index.html\" \"nodemon --watch src/app --exec 'yarn dev'\"",
-    "web": "parcel watch --target web --no-source-maps --no-cache",
-    "app": "parcel watch --target main --target preload --no-source-maps --no-hmr --no-cache",
+    "web": "parcel watch --target web --no-source-maps",
+    "app": "parcel watch --target main --target preload --no-source-maps --no-hmr",
     "dev": "NODE_ENV=dev electron .",
     "build": "rm -rf dist && parcel build --no-source-maps --no-scope-hoist",
     "pack:mac": "yarn build && electron-builder build --mac",
     "pack:win": "yarn build && electron-builder build --win"
   },
   "dependencies": {
+    "log4js": "^6.5.2",
     "sqlite3": "^5.0.8"
   },
   "devDependencies": {

@@ -11,6 +11,15 @@ exports.epath = function (adir) {
 };
 
 /**
+ * 返回日志目录，默认项目根目录
+ * @param {string} file 日志文件
+ * @returns 
+ */
+exports.logpath= function(file){
+  return path.resolve(app.getAppPath(),file);
+}
+
+/**
  * 返回资源目录
  * @param {*} adir
  * @returns
