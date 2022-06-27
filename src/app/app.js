@@ -7,8 +7,6 @@ const log = require("./libs/log");
 var win = null;
 var iconTary = null;
 
-log.file("app.js");
-
 //启动主进程
 app.whenReady().then(() => {
   log.trace("start ipc");

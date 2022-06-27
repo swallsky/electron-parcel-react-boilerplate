@@ -3,7 +3,7 @@ const log4js = require("log4js");
 const { logpath } = require("./dir");
 
 //格式设定 @https://log4js-node.github.io/log4js-node/index.html
-let pattern = "%[ %d{yyyy/MM/dd hh:mm:ss} %p file:%X{file} %m %]"; //定义日志格式
+let pattern = "%[ %d{yyyy/MM/dd hh:mm:ss} %p %m %]"; //定义日志格式
 log4js.configure({
   appenders: {
     debug: {
@@ -23,14 +23,6 @@ log4js.configure({
 });
 
 const logger = log4js.getLogger(app.isPackaged == true ? "app" : "default");
-
-/**
- * 设置自定义标签
- * @param {*} val 
- */
-exports.file = function(val){
-    logger.addContext("file",val);
-}
 
 exports.debug = function (str) {
   logger.level = "debug";
