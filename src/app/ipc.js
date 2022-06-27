@@ -16,7 +16,7 @@ function model() {
       return "Model:"+acts[0]+" is not found!";
     }
     if(typeof actObj[acts[1]] == 'undefined'){
-      return "Model.action:"+action+" is not found!";
+      return "Model action:"+action+" is not found!";
     }
     let res = await actObj[acts[1]](args);
     return res;
