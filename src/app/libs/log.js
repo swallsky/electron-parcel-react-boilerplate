@@ -2,27 +2,32 @@ const { app } = require("electron");
 const log4js = require("log4js");
 const { logpath } = require("./dir");
 
-//格式设定 @https://log4js-node.github.io/log4js-node/index.html
-let pattern = "%[ %d{yyyy/MM/dd hh:mm:ss} %p %m %]"; //定义日志格式
-log4js.configure({
-  appenders: {
-    debug: {
-      type: "stdout",
-      layout: { type: "pattern", pattern: pattern },
+var logger = log4js.getLogger(app.isPackaged == true ? "app" : "default");
+/**
+ * 初始化
+ */
+function init() {
+  //格式设定 @https://log4js-node.github.io/log4js-node/index.html
+  let pattern = "%[ %d{yyyy/MM/dd hh:mm:ss} %p %m %]"; //定义日志格式
+  log4js.configure({
+    appenders: {
+      debug: {
+        type: "stdout",
+        layout: { type: "pattern", pattern: pattern },
+      },
+      app: {
+        type: "file",
+        layout: { type: "pattern", pattern: pattern },
+        filename: logpath("app.log"),
+      },
     },
-    app: {
-      type: "file",
-      layout: { type: "pattern", pattern: pattern },
-      filename: logpath("app.log"),
+    categories: {
+      default: { appenders: ["debug"], level: "trace", enableCallStack: true },
+      app: { appenders: ["app"], level: "trace", enableCallStack: true },
     },
-  },
-  categories: {
-    default: { appenders: ["debug"], level: "trace", enableCallStack: true },
-    app: { appenders: ["app"], level: "trace", enableCallStack: true },
-  },
-});
-
-const logger = log4js.getLogger(app.isPackaged == true ? "app" : "default");
+  });
+}
+init();
 
 exports.debug = function (str) {
   logger.level = "debug";
