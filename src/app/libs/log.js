@@ -3,7 +3,7 @@ const log4js = require("log4js");
 const { logpath } = require("./dir");
 
 //格式设定 @https://log4js-node.github.io/log4js-node/index.html
-let pattern = "%[ %d{yyyy/MM/dd hh:mm:ss} %p file:%X{file} %m%n %]"; //定义日志格式
+let pattern = "%[ %d{yyyy/MM/dd hh:mm:ss} %p file:%X{file} %m %]"; //定义日志格式
 log4js.configure({
   appenders: {
     debug: {

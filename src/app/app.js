@@ -2,14 +2,20 @@ const { app, BrowserWindow } = require("electron");
 require("./libs/dir").createHomePath();
 const { mainWindow, trayIcon } = require("./main");
 const ipcManager = require("./ipc");
+const log = require("./libs/log");
 
 var win = null;
 var iconTary = null;
 
+log.file("app.js");
+
 //启动主进程
 app.whenReady().then(() => {
+  log.trace("start ipc");
   ipcManager(); //启动主进程通讯
+  log.trace("start main window");
   win = mainWindow();
+  log.trace("start trayIcon");
   iconTary = trayIcon(win);
 });
 // 关闭所有窗口时
