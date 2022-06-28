@@ -35,7 +35,6 @@
     "pack:win": "yarn build && electron-builder build --win"
   },
   "dependencies": {
-    "@electron/remote": "^2.0.8",
     "log4js": "^6.5.2",
     "sqlite3": "^5.0.8"
   },
