@@ -10,8 +10,8 @@ exports.mainWindow = function () {
     width: 1280,
     height: 800,
     webPreferences: {
-      preload: epath(["web", "preload", "main.js"]),
-    },
+      preload: epath(["web", "preload", "main.js"])
+    }
   });
   win.loadFile(epath(["web", "index.html"]));
   if (app.isPackaged == false) {
