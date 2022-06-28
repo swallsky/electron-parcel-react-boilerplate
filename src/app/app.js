@@ -2,6 +2,7 @@ const { app, BrowserWindow } = require("electron");
 require("./libs/dir").createHomePath();
 const { mainWindow, trayIcon } = require("./main");
 const ipcManager = require("./ipc");
+const updater = require("./updater");
 const log = require("./libs/log");
 
 var win = null;
@@ -15,6 +16,8 @@ app.whenReady().then(() => {
   win = mainWindow();
   log.trace("start trayIcon");
   iconTary = trayIcon(win);
+  // log.trace("start autoUpdater");
+  // updater();
 });
 // 关闭所有窗口时
 app.on("window-all-closed", () => {
