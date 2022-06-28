@@ -1,9 +1,11 @@
-const { ipcMain } = require("electron");
+const { ipcMain,dialog } = require("electron");
 const modelInit = require("./model/init");
 const modelRegister = require("./model");
 const log = require("./libs/log");
 
-// 数据模型
+/**
+ * 数据模型,读取相关数据
+ */
 function model() {
   //数据库初始化
   log.trace("model init");
@@ -25,9 +27,20 @@ function model() {
     return res;
   });
 }
+
+/**
+ * 打开文件并返回文件路径
+ */
+function openfile(){
+  ipcMain.handle("openfile", async ()=>{
+    let res = await dialog.showOpenDialog({ properties: ['openFile'] });
+    return res;
+  });
+}
 /**
  * 主进程
  */
 module.exports = () => {
   model();
+  openfile();
 };
