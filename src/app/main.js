@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Tray, nativeImage } = require("electron");
+const { app, BrowserWindow, Tray, nativeImage, Menu } = require("electron");
 const { epath, assets } = require("./libs/dir");
 
 /**
@@ -18,9 +18,72 @@ exports.mainWindow = function () {
     //开发环境时
     win.webContents.openDevTools();
   }
+
+  //自定义菜单
+  appMenu();
+
   return win;
 };
 
+/**
+ * 应用菜单
+ */
+function appMenu() {
+  const isMac = process.platform === "darwin";
+  const template = [
+    // { role: 'appMenu' }
+    ...(isMac
+      ? [
+          {
+            label: app.name,
+            submenu: [
+              { role: "about", label: "关于app" },
+              { type: "separator" },
+              { role: "hide", label: "隐藏app" },
+              { type: "separator" },
+              { role: "quit", label: "退出app" },
+            ],
+          },
+        ]
+      : []),
+    // { role: 'editMenu' }
+    {
+      label: "编辑",
+      submenu: [
+        { role: "cut", label: "剪切" },
+        { role: "copy", label: "复制" },
+        { role: "paste", label: "粘帖" },
+      ],
+    },
+    ...(app.isPackaged === true
+      ? []
+      : [
+          {
+            label: "开发",
+            submenu: [
+              { role: "reload", label: "刷新" },
+              { role: "forceReload", label: "强制刷新" },
+              { role: "toggleDevTools", label: "切换开发者工具" },
+              { type: "separator" },
+              { role: "resetZoom", label: "还原大小" },
+              { role: "zoomIn", label: "缩小" },
+              { role: "zoomOut", label: "放大" },
+              { type: "separator" },
+              { role: "togglefullscreen", label: "全屏" },
+            ],
+          },
+        ]),
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+}
+
+/**
+ * 托盘图标
+ * @param {*} win
+ * @returns
+ */
 exports.trayIcon = function (win) {
   let tray = null;
   // 加入托盘

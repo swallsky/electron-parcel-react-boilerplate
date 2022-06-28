@@ -20,6 +20,7 @@ app.whenReady().then(() => {
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     //非mac系统
+    log.trace("exit app")
     app.quit();
     win = null;
   } else {
@@ -30,6 +31,7 @@ app.on("window-all-closed", () => {
 // 激活应用时
 app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
+    log.trace("activate app");
     win = mainWindow();
     iconTary = trayIcon(win);
     mainLoading(win);
